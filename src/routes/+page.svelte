@@ -1,6 +1,7 @@
 <script>
 	import { useChat } from "ai/svelte";
 	import { onMount, onDestroy } from "svelte";
+	import { Button, FormInput, Input } from "yesvelte";
 
 	const { input, handleSubmit, messages } = useChat();
 
@@ -57,7 +58,7 @@
 <section>
 	<!-- <h2>messages count: {n_messages}</h2> -->
 
-	<div>
+	<div class="messages">
 		{#each $messages as message}
 			<p>
 				{#if message.role === "user"}
@@ -70,12 +71,11 @@
 		{/each}
 	</div>
 
-	<div>
-		<form on:submit={handleSubmit}>
-			<input bind:value={$input} />
-			<button type="submit">→</button>
-		</form>
-	</div>
+	<form on:submit={handleSubmit}>
+		<FormInput placeholder="Send a message..." bind:value={$input}>
+			<Button slot="end" type="submit">&#x2192;</Button>
+		</FormInput>
+	</form>
 </section>
 
 <style>
@@ -94,5 +94,9 @@
 
 	input {
 		border: 1px solid #808080;
+	}
+
+	.messages {
+		margin: 1rem;
 	}
 </style>

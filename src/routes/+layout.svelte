@@ -1,6 +1,7 @@
 <script>
 	import "../app.pcss";
 	import "./styles.css";
+	import tabler from "yesvelte/css/tabler.min.css?url";
 </script>
 
 <div class="app">
@@ -8,6 +9,10 @@
 		<slot />
 	</main>
 </div>
+
+<svelte:head>
+	<link rel="stylesheet" href={tabler} />
+</svelte:head>
 
 <style>
 	.app {

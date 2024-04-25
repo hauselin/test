@@ -12,7 +12,8 @@
   "dependencies": {
     "@ai-sdk/openai": "latest",
     "ai": "latest",
-    "openai": "4.16.1"
+    "openai": "4.16.1",
+    "yesvelte": "^0.0.2-next.217"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
