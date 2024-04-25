@@ -11,8 +11,13 @@
 	const TIMEOUT_DURATION = 1000;
 
 	function sendMessageToParent(data) {
-		// The '*' is used as a wildcard to allow any origin. For security, specify the exact parent origin if known.
-		parent.postMessage(data, "*");
+		if (typeof parent !== "undefined" && parent !== window) {
+			parent.postMessage(data, "*");
+		} else {
+			console.log(
+				"No parent frame available or running as a standalone page.",
+			);
+		}
 	}
 
 	$: if ($messages) {
