@@ -7,9 +7,15 @@
 
 	let streamEnded = false;
 	let timeoutId;
+	let messagesDiv;
 
 	let n_messages = 0;
 	const TIMEOUT_DURATION = 1000;
+
+	const scrollToBottom = async (node) => {
+		console.log(node);
+		node.scroll({ top: node.scrollHeight, behavior: "smooth" });
+	};
 
 	function sendMessageToParent(data) {
 		if (typeof parent !== "undefined" && parent !== window) {
@@ -21,8 +27,11 @@
 		}
 	}
 
-	$: if ($messages) {
+	$: if ($messages && messagesDiv) {
 		// console.log($messages);
+		scrollToBottom(messagesDiv);
+		console.log(messagesDiv);
+
 		sendMessageToParent({ data: $messages });
 		if ($messages.length > n_messages) {
 			n_messages = $messages.length;
@@ -58,7 +67,7 @@
 <section>
 	<!-- <h2>messages count: {n_messages}</h2> -->
 
-	<div class="messages">
+	<div class="messages" bind:this={messagesDiv}>
 		{#each $messages as message}
 			<p>
 				{#if message.role === "user"}
@@ -98,5 +107,8 @@
 
 	.messages {
 		margin: 1rem;
+		overflow-y: auto;
+		max-height: 350px;
+		/* height: 500px; */
 	}
 </style>
