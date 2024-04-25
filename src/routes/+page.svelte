@@ -95,20 +95,11 @@
 		align-items: center;
 		flex: 0;
 	}
-	button {
-		background-color: white;
-		border: 1px solid #808080;
-		border-radius: 0%;
-	}
-
-	input {
-		border: 1px solid #808080;
-	}
-
 	.messages {
 		margin: 1rem;
 		overflow-y: auto;
 		max-height: 350px;
 		/* height: 500px; */
+		width: 255px;
 	}
 </style>
