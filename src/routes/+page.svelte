@@ -100,6 +100,6 @@
 		overflow-y: auto;
 		max-height: 350px;
 		/* height: 500px; */
-		width: 255px;
+		width: 377px;
 	}
 </style>
