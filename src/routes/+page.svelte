@@ -17,6 +17,7 @@
 			clearTimeout(timeoutId);
 			timeoutId = setTimeout(() => {
 				streamEnded = true;
+				n_messages = $messages.length;
 				console.log("Streaming has ended");
 			}, TIMEOUT_DURATION);
 		}
