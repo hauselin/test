@@ -10,6 +10,11 @@
 	let n_messages = 0;
 	const TIMEOUT_DURATION = 2500;
 
+	function sendMessageToParent(data) {
+		// The '*' is used as a wildcard to allow any origin. For security, specify the exact parent origin if known.
+		parent.postMessage(data, "*");
+	}
+
 	$: if ($messages) {
 		// console.log($messages);
 		if ($messages.length > n_messages) {
@@ -19,6 +24,10 @@
 				streamEnded = true;
 				n_messages = $messages.length;
 				console.log("Streaming has ended");
+				let payload = $messages[$messages.length - 1].content;
+				console.log(payload);
+
+				sendMessageToParent({ data: payload });
 			}, TIMEOUT_DURATION);
 		}
 	}
