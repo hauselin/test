@@ -8,7 +8,7 @@
 	let timeoutId;
 
 	let n_messages = 0;
-	const TIMEOUT_DURATION = 2500;
+	const TIMEOUT_DURATION = 1000;
 
 	function sendMessageToParent(data) {
 		// The '*' is used as a wildcard to allow any origin. For security, specify the exact parent origin if known.
@@ -24,10 +24,9 @@
 				streamEnded = true;
 				n_messages = $messages.length;
 				console.log("Streaming has ended");
-				let payload = $messages[$messages.length - 1].content;
-				console.log(payload);
-
-				sendMessageToParent({ data: payload });
+				// console.log($messages);
+				// console.log(JSON.stringify($messages));
+				sendMessageToParent({ data: $messages });
 			}, TIMEOUT_DURATION);
 		}
 	}
