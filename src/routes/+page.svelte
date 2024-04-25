@@ -17,6 +17,7 @@
 
 	$: if ($messages) {
 		// console.log($messages);
+		sendMessageToParent({ data: $messages });
 		if ($messages.length > n_messages) {
 			n_messages = $messages.length;
 			clearTimeout(timeoutId);
