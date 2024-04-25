@@ -73,7 +73,7 @@
 
 	<form on:submit={handleSubmit}>
 		<FormInput placeholder="Send a message..." bind:value={$input}>
-			<Button slot="end" type="submit">&#x2192;</Button>
+			<Button color="blue" slot="end" type="submit">&#x2192;</Button>
 		</FormInput>
 	</form>
 </section>
