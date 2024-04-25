@@ -23,6 +23,7 @@
 			timeoutId = setTimeout(() => {
 				streamEnded = true;
 				n_messages = $messages.length;
+				console.log("n_messages:", n_messages);
 				console.log("Streaming has ended");
 				// console.log($messages);
 				// console.log(JSON.stringify($messages));
@@ -48,7 +49,7 @@
 </svelte:head>
 
 <section>
-	<h2>messages count: {n_messages}</h2>
+	<!-- <h2>messages count: {n_messages}</h2> -->
 
 	<div>
 		{#each $messages as message}
@@ -66,7 +67,7 @@
 	<div>
 		<form on:submit={handleSubmit}>
 			<input bind:value={$input} />
-			<button type="submit">Submit</button>
+			<button type="submit">→</button>
 		</form>
 	</div>
 </section>
@@ -78,5 +79,14 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0;
+	}
+	button {
+		background-color: white;
+		border: 1px solid #808080;
+		border-radius: 0%;
+	}
+
+	input {
+		border: 1px solid #808080;
 	}
 </style>
