@@ -17,7 +17,6 @@ export const POST = (async ({ request }) => {
   const result = await experimental_streamText({
     model: openai.chat('gpt-3.5-turbo-0125'),
     messages,
-    // system: "always start with hihihi"
   });
 
   // Respond with the stream
