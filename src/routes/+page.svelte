@@ -1,7 +1,7 @@
 <script>
 	import { useChat } from "ai/svelte";
 	import { onMount, onDestroy } from "svelte";
-	import { Button, FormInput, Input } from "yesvelte";
+	import { Button, FormInput, Input, Textarea } from "yesvelte";
 
 	const { input, handleSubmit, messages } = useChat();
 
@@ -13,7 +13,6 @@
 	const TIMEOUT_DURATION = 1000;
 
 	const scrollToBottom = async (node) => {
-		console.log(node);
 		node.scroll({ top: node.scrollHeight, behavior: "smooth" });
 	};
 
@@ -29,8 +28,8 @@
 
 	$: if ($messages && messagesDiv) {
 		// console.log($messages);
+		// console.log(messagesDiv);
 		scrollToBottom(messagesDiv);
-		console.log(messagesDiv);
 
 		sendMessageToParent({ data: $messages });
 		if ($messages.length > n_messages) {
